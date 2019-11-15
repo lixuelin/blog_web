@@ -1,32 +1,48 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-head></v-head>
+    <article id="main">
+      <div id="saidbar">
+        <v-side></v-side>
+      </div>
+      <div id="content">
+        <router-view></router-view>
+      </div>
+    </article>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import VHead from "@/components/common/header.vue";
+import VSide from "@/components/common/sidebar.vue";
+export default {
+  name: "app",
+  components: {
+    VHead,
+    VSide
   }
+};
+</script>
+
+<style lang="less" scoped>
+#main {
+  position: relative;
+  padding: 0 60px 30px;
+}
+#saidbar {
+  position: fixed;
+  left: 0;
+  z-index: 10;
+  top: 61px;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#content {
+  position: relative;
+  padding: 35px 0;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 50px;
 }
 </style>
