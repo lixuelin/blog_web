@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <v-head></v-head>
+    <div id="head">
+      <v-head></v-head>
+    </div>
     <article id="main">
-      <div id="saidbar">
+      <div id="sidebar">
         <v-side></v-side>
       </div>
       <div id="content">
@@ -14,7 +16,7 @@
 
 <script>
 import VHead from "@/components/common/header.vue";
-import VSide from "@/components/common/sidebar.vue";
+import VSide from "@/components/sidebar/sidebar.vue";
 export default {
   name: "app",
   components: {
@@ -24,25 +26,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-#main {
-  position: relative;
-  padding: 0 60px 30px;
-}
-#saidbar {
-  position: fixed;
-  left: 0;
-  z-index: 10;
-  top: 61px;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-#content {
-  position: relative;
-  padding: 35px 0;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-left: 50px;
-}
-</style>
+<style lang="less" scoped></style>
