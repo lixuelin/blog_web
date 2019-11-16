@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.vnav {
+.vside {
   padding: 20px 0;
 }
 </style>
