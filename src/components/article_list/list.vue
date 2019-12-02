@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li v-for="item in list" :key="item.name">
+    <li v-for="(item, index) in list" :key="index" @click="go_to_detail(item)">
       <v-item :item="item">
         <v-title :name="item.name" :time="item.time"></v-title>
         <v-content :cont="item.content"></v-content>
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import VItem from "@/components/article_list/item.vue";
-import VTitle from "@/components/article_list/title.vue";
-import VContent from "@/components/article_list/content.vue";
-import VFoot from "@/components/article_list/foot.vue";
+import VItem from "./item.vue";
+import VTitle from "./title.vue";
+import VContent from "./content.vue";
+import VFoot from "./foot.vue";
 export default {
   props: {
     list: {
@@ -27,9 +27,11 @@ export default {
     VContent,
     VFoot
   },
-  mounted() {
-    console.log(this.list);
-  }
+  methods: {
+    go_to_detail(item) {
+      this.$router.push({name: "article", query: {id: "ddd"}});
+    }
+  },
 };
 </script>
 

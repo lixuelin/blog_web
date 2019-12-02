@@ -19,12 +19,6 @@ export default {
       type: String
     }
   },
-  data() {
-    return {};
-  },
-  mounted() {
-    console.log(this.item);
-  }
 };
 </script>
 

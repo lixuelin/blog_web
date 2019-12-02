@@ -41,13 +41,17 @@ body {
 }
 
 #head {
-    padding: 10px 60px;
+    position: fixed;
+    padding: 10px 0;
+    width: 100%;
+    z-index: 20;
+    background: #fff;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
     transition: background-color 0.3s ease-in-out;
 }
 
 #main {
-    position: relative;
+    position: static;
     padding: 0 60px 30px;
 }
 
@@ -55,7 +59,7 @@ body {
     position: fixed;
     left: 0;
     z-index: 10;
-    top: 61px;
+    top: 60px;
     width: 200px;
     bottom: 0;
     overflow-x: hidden;
@@ -67,8 +71,12 @@ body {
     position: relative;
     margin: 0 auto;
     max-width: 1000px;
-    padding: 35px 0;
+    padding: 80px 0 40px;
     padding-left: 200px;
+}
+
+#admin {
+    position: relative;
 }
 
 @media screen and (max-width: 900px) {

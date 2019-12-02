@@ -1,6 +1,6 @@
 <template>
-  <div class="vhead">
-    <div class="vlogo">
+  <div class="head">
+    <div class="logo">
       <img src="../../assets/logo.png" />
     </div>
     <div class="vnav">
@@ -24,10 +24,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.vhead {
+.head {
   display: flex;
+  padding: 0 60px;
 }
-.vlogo {
+.logo {
   flex-basis: 100px;
   & img {
     display: block;

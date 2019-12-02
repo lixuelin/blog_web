@@ -8,7 +8,7 @@
       @click="change(index)"
       @mouseenter="enter(index)" 
       @mouseout="out(index)">
-        {{ item.name }}
+        <router-link :to="item.path">{{ item.name }}</router-link>
       </li>
     </ul>
   </div>
@@ -20,19 +20,28 @@ export default {
     return {
       nav: [
         {
-          name: "Home"
+          name: "Home",
+          path: "/"
         },
         {
-          name: "Vue"
+          name: "Vue",
+          path: "/vue"
+        },
+        // {
+        //   name: "Node",
+        //   path: "/"
+        // },
+        // {
+        //   name: "Javascript",
+        //   path: "/"
+        // },
+        {
+          name: "Book",
+          path: "/book"
         },
         {
-          name: "Node"
-        },
-        {
-          name: "Javascript"
-        },
-        {
-          name: "Others"
+          name: "About",
+          path: "/about"
         }
       ],
       current: 0,
@@ -87,6 +96,10 @@ export default {
     &.active{
       border-left: 2px solid #f04844;
     }
+  }
+
+  & a{
+    display: block;
   }
 }
 </style>
