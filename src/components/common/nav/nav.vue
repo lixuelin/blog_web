@@ -3,7 +3,7 @@
     <ul>
       <span class="line" :style="hover_pos"></span>
       <li :class="{active: current === index}" 
-      v-for="(item, index) in nav" 
+      v-for="(item, index) in menu" 
       :key="item.name" 
       @click="change(index)"
       @mouseenter="enter(index)" 
@@ -16,34 +16,13 @@
 
 <script>
 export default {
+  props: {
+    menu: {
+      type: Array,
+    },
+  },
   data() {
     return {
-      nav: [
-        {
-          name: "Home",
-          path: "/"
-        },
-        {
-          name: "Vue",
-          path: "/vue"
-        },
-        // {
-        //   name: "Node",
-        //   path: "/"
-        // },
-        // {
-        //   name: "Javascript",
-        //   path: "/"
-        // },
-        {
-          name: "Book",
-          path: "/book"
-        },
-        {
-          name: "About",
-          path: "/about"
-        }
-      ],
       current: 0,
       pos: {
         top: "10px",
@@ -85,7 +64,7 @@ export default {
     padding-left: 20px;
     height: 50px;
     line-height: 50px;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
     border-left: 2px solid transparent;
     cursor: pointer;
     &:hover {

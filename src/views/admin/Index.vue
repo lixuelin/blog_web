@@ -5,7 +5,7 @@
     </div>
     <div class="body">
       <div class="side-bar">
-        <v-nav></v-nav>
+        <v-nav :menu="nav"></v-nav>
       </div>
       <article class="main">
         <router-view></router-view>
@@ -16,8 +16,30 @@
 
 <script>
 import VHead from "@/components/admin/common/head.vue";
-import VNav from "@/components/admin/nav/nav.vue";
+import VNav from "@/components/common/nav/nav.vue";
 export default {
+  data() {
+    return {
+      nav: [
+        {
+          name: "文章管理",
+          path: "/manager"
+        },
+        {
+          name: "标签管理",
+          path: "/manager/mark"
+        },
+        {
+          name: "工作管理",
+          path: "/manager/work"
+        },
+        {
+          name: "书籍管理",
+          path: "/manager/book"
+        }
+      ]
+    }
+  },
   components: {
     VHead,
     VNav

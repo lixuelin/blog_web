@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     go_to_home() {
-      this.$router.push({ name: "admin" });
+      this.$router.push({ name: "manager" });
     }
   }
 };
