@@ -2,13 +2,18 @@
   <div class="nav">
     <ul>
       <span class="line" :style="hover_pos"></span>
-      <li :class="{active: current === index}" 
-      v-for="(item, index) in menu" 
-      :key="item.name" 
-      @click="change(index)"
-      @mouseenter="enter(index)" 
-      @mouseout="out(index)">
+      <li
+        :class="{ active: current === index }"
+        v-for="(item, index) in menu"
+        :key="item.name"
+        @click="change(index)"
+        @mouseenter="enter(index)"
+        @mouseout="out(index)"
+      >
         <router-link :to="item.path">{{ item.name }}</router-link>
+        <!-- <div v-if="item.children" v-show="current === index">
+          <item :tree="item.children"></item>
+        </div> -->
       </li>
     </ul>
   </div>
@@ -16,35 +21,32 @@
 
 <script>
 export default {
+  name: "item",
   props: {
     menu: {
-      type: Array,
-    },
+      type: Array
+    }
   },
   data() {
     return {
       current: 0,
       pos: {
-        top: "10px",
-      },
+        top: "10px"
+      }
     };
   },
   computed: {
     hover_pos() {
-      return this.data 
+      return this.data;
     }
   },
   methods: {
     change(index) {
       this.current = index;
     },
-    enter() {
-      
-    },
-    out() {
-
-    }
-  },
+    enter() {},
+    out() {}
+  }
 };
 </script>
 
@@ -72,12 +74,12 @@ export default {
       border-left: 2px solid #f04844;
     }
 
-    &.active{
+    &.active {
       border-left: 2px solid #f04844;
     }
   }
 
-  & a{
+  & a {
     display: block;
   }
 }

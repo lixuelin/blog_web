@@ -17,7 +17,12 @@ const routes = [
       {
         path: 'article',
         name: 'article',
-        component: () => import('@/views/admin/article.vue'),
+        component: () => import('@/views/admin/article/article.vue'),
+      },
+      {
+        path: 'add_article',
+        name: 'add_article',
+        component: () => import('@/views/admin/article/article_add.vue'),
       },
       {
         path: 'mark',

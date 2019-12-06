@@ -38,7 +38,7 @@ export default {
           path: "/manager/book"
         }
       ]
-    }
+    };
   },
   components: {
     VHead,
@@ -54,7 +54,7 @@ export default {
     position: fixed;
     z-index: 20px;
     width: 100%;
-    height: 40px;
+    height: 60px;
   }
   .body {
     position: relative;

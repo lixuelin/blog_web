@@ -22,7 +22,7 @@ export default {};
 .head {
   display: flex;
   padding: 10px 0;
-  height: 40px;
+  height: 60px;
   background: #fff;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
   transition: background-color 0.3s ease-in-out;
@@ -34,9 +34,9 @@ export default {};
     }
   }
   .menu {
-      flex: 1;
-      height: 40px;
-      text-align: right;
+    flex: 1;
+    height: 60px;
+    text-align: right;
     & li {
       display: inline;
       padding: 0 10px;
