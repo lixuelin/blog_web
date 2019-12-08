@@ -15,5 +15,24 @@ module.exports = {
     },
     index: "src/main.js"
   },
-  lintOnSave: false
+  lintOnSave: false,
+  devServer: {
+    open: false, // 是否自动打开页面
+    host: "0.0.0.0", // 域名
+    port: "8080", // 端口号
+    https: false, // 是否使用https
+    hotOnly: true, // 热更新
+    proxy: {
+      // 配置跨域
+      "/": {
+        target: "http://0.0.0.0:8088/",
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          // 使用 '/api代替target'
+          "^/": ""
+        }
+      }
+    }
+  }
 };
