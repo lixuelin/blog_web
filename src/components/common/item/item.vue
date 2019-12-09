@@ -23,6 +23,7 @@ export default {
 <style lang="less" scoped>
 .item-module {
   display: flex;
+  margin-bottom: 20px;
   &-title {
     flex-basis: 100px;
     margin-right: 10px;

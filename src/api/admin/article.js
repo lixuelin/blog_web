@@ -1,6 +1,8 @@
 /**
  * 文章请求配置
  * createArticle: 添加文章
+ * getArticle: 获取文章
+ * getArticles: 获取多篇文章
  *
  */
 
