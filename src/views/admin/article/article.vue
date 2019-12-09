@@ -6,11 +6,15 @@
     <div>
       <v-table :columns="columns" :data="articles"></v-table>
     </div>
+    <div>
+      <v-page></v-page>
+    </div>
   </div>
 </template>
 
 <script>
 import VTable from "./../../../components/common/table/index.vue";
+import VPage from "./../../../components/common/page/page.vue";
 import { Button } from "vant";
 export default {
   data() {
@@ -46,7 +50,8 @@ export default {
   },
   components: {
     VTable,
-    [Button.name]: Button
+    [Button.name]: Button,
+    VPage
   },
   mounted() {
     this.getArticles();
@@ -58,9 +63,14 @@ export default {
       });
     },
     async getArticles() {
-      let res = await this.$Http.getArticles();
-      this.articles = res.data;
-      console.log(res);
+      let data = {
+        page: 0,
+        page_size: 10,
+        name: "",
+        description: ""
+      };
+      let res = await this.$Http.getArticles(data);
+      this.articles = res.data.rows;
     }
   }
 };

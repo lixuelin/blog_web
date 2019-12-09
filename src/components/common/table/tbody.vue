@@ -15,9 +15,7 @@ export default {
       type: Array
     }
   },
-  mounted() {
-    console.log(this.vtable);
-  }
+  mounted() {}
 };
 </script>
 
