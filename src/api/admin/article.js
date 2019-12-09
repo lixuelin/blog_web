@@ -12,6 +12,10 @@ const ArticleApi = {
     getArticle: {
         method: "get",
         url: "/article"
+    },
+    getArticles: {
+        method: "get",
+        url: "/article/list"
     }
 };
 

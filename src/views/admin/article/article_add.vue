@@ -17,14 +17,19 @@
     <div class="article-item">
       <v-item label="推荐">
         <div class="article-item-text">
-          <input type="text" placeholder="请输入文章标题" />
+          <van-radio-group v-model="articleData.is_hot" class="article-item-group">
+            <van-radio name="0" class="article-item-group-radio">默认</van-radio>
+            <van-radio name="1" class="article-item-group-radio">推荐</van-radio>
+          </van-radio-group>
         </div>
       </v-item>
     </div>
     <div class="article-item">
       <v-item label="封面图">
         <div class="article-item-text">
-          <input type="file" />
+          <van-uploader>
+            <van-button icon="photo" type="primary">上传图片</van-button>
+          </van-uploader>
         </div>
       </v-item>
     </div>
@@ -49,9 +54,9 @@
         </div>
       </v-item>
     </div>
-    <div>
+    <div class="article-foot">
       <van-button size="normal" type="primary" @click="createArticle">保存</van-button>
-      <van-button size="normal" type="danger">取消</van-button>
+      <van-button size="normal" type="danger" @click="goBack">取消</van-button>
     </div>
   </div>
 </template>
@@ -59,14 +64,14 @@
 <script>
 import VItem from "./../../../components/common/item/item.vue";
 import VEdit from "./../../../components/edit/edit.vue";
-import { Button, Toast } from "vant";
+import { Button, Radio, RadioGroup, Uploader } from "vant";
 export default {
   data() {
     return {
       articleData: {
         name: "",
         description: "",
-        is_hot: 0,
+        is_hot: "0",
         img: "content",
         source: "",
         content: "",
@@ -77,7 +82,10 @@ export default {
   components: {
     VItem,
     VEdit,
-    [Button.name]: Button
+    [Button.name]: Button,
+    [Radio.name]: Radio,
+    [RadioGroup.name]: RadioGroup,
+    [Uploader.name]: Uploader
   },
   mounted() {
     this.getArticle();
@@ -89,29 +97,26 @@ export default {
     async getArticle() {
       let data = { id: 1 };
       let res = await this.$Http.getArticle(data);
+      if (!res.success) {
+        return console.log(res.msg);
+      }
     },
     async createArticle() {
-      try {
-        let res = await this.$Http.createArticle(this.articleData);
-        Toast.success("创建成功");
-      } catch (err) {}
-
-      console.log(res, "res");
+      let res = await this.$Http.createArticle(this.articleData);
+      if (!res.success) {
+        return console.log(res.msg);
+      }
+      this.goBack();
+    },
+    goBack() {
+      setTimeout(() => {
+        this.$router.push({ name: "manager" });
+      }, 500);
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-.article-item {
-  margin-bottom: 20px;
-  &-text {
-    & input {
-      padding: 5px 10px;
-      width: 240px;
-      height: 36px;
-      border: 1px solid #ccc;
-    }
-  }
-}
+@import url("./../../../assets/less/admin/article.less");
 </style>

@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div>
-      <van-button type="primary" size="small" @click="createArticle">添加文章</van-button>
+    <div class="article-head">
+      <van-button type="primary" @click="createArticle">添加文章</van-button>
     </div>
-    <v-table :columns="columns" :data="articles"></v-table>
+    <div>
+      <v-table :columns="columns" :data="articles"></v-table>
+    </div>
   </div>
 </template>
 
@@ -16,7 +18,7 @@ export default {
       columns: [
         {
           name: "标题",
-          key: "title"
+          key: "name"
         },
         {
           name: "描述",
@@ -28,7 +30,7 @@ export default {
         },
         {
           name: "创建时间",
-          key: "createAt"
+          key: "createdAt"
         }
       ],
       articles: [
@@ -46,14 +48,24 @@ export default {
     VTable,
     [Button.name]: Button
   },
+  mounted() {
+    this.getArticles();
+  },
   methods: {
     createArticle() {
       this.$router.push({
         path: "add_article"
       });
+    },
+    async getArticles() {
+      let res = await this.$Http.getArticles();
+      this.articles = res.data;
+      console.log(res);
     }
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped>
+@import url("./../../../assets/less/admin/article.less");
+</style>
