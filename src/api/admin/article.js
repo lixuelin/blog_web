@@ -5,18 +5,18 @@
  */
 
 const ArticleApi = {
-    createArticle: {
-        method: "post",
-        url: "/article"
-    },
-    getArticle: {
-        method: "get",
-        url: "/article"
-    },
-    getArticles: {
-        method: "get",
-        url: "/article/list"
-    }
+  createArticle: {
+    method: "post",
+    url: "/article"
+  },
+  getArticle: {
+    method: "get",
+    url: "/article"
+  },
+  getArticles: {
+    method: "get",
+    url: "/article/list"
+  }
 };
 
 module.exports = ArticleApi;
