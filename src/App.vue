@@ -1,29 +1,45 @@
 <template>
   <div id="app">
-    <div id="head">
-      <v-head></v-head>
+    <div class="mobile-header">
+      <mobile-header-view></mobile-header-view>
     </div>
-    <article id="main">
-      <div id="sidebar">
-        <v-side></v-side>
+    <div class="layout">
+      <div id="header" class="layout-head">
+        <header-view></header-view>
       </div>
-      <div id="content">
-        <router-view></router-view>
+      <div id="sidebar" class="layout-sidebar">
+        <side-bar-view></side-bar-view>
       </div>
-    </article>
+      <div id="container" class="layout-container">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import VHead from "@/components/common/header.vue";
-import VSide from "@/components/sidebar/sidebar.vue";
+import MobileHeaderView from "@/components/mobile_header.vue";
+import HeaderView from "@/components/header.vue";
+import SideBarView from "@/components/sidebar.vue";
 export default {
-  name: "app",
+  data() {
+    return {
+      show: false
+    };
+  },
   components: {
-    VHead,
-    VSide
+    MobileHeaderView,
+    HeaderView,
+    SideBarView
+  },
+  methods: {
+    showPopup() {
+      this.show = !this.show;
+    }
   }
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less">
+@import url("./assets/less/common.less");
+</style>

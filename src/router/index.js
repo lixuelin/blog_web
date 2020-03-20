@@ -1,37 +1,36 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: () => import("@/views/Home.vue")
+    name: "Home",
+    component: Home
   },
   {
     path: "/about",
-    name: "about",
-    component: () => import("@/views/About.vue")
-  },
-  {
-    path: "/book",
-    name: "book",
-    component: () => import("@/views/Book.vue")
+    name: "About",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
     path: "/vue",
-    name: "vue",
-    component: () => import("@/views/Vue.vue")
+    name: "Vue",
+    component: () => import(/* webpackChunkName: "about" */ "../views/Vue.vue")
   },
   {
-    path: "/article",
-    name: "article",
-    component: () => import("@/components/article/item.vue")
+    path: "/book",
+    name: "Book",
+    component: () => import(/* webpackChunkName: "about" */ "../views/Book.vue")
   }
 ];
 
 const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes
 });
 
