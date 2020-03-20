@@ -41,7 +41,7 @@ export default {
   methods: {
     go_to_detail(item) {
       console.log(item);
-      this.$router.push({ name: "article", query: { id: "ddd" } });
+      this.$router.push({ name: "article_detail", query: { id: "ddd" } });
     }
   }
 };
