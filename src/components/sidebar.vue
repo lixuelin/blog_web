@@ -38,8 +38,8 @@ export default {
           path: "/vue"
         },
         {
-          name: "Book",
-          path: "/book"
+          name: "Node",
+          path: "/node"
         },
         {
           name: "About",

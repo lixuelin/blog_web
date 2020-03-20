@@ -30,7 +30,9 @@ export default {
 
 <style lang="less" scoped>
 .article {
+  width: 100%;
   &-header {
+    width: 100%;
     & h1 {
       padding: 10px 15px;
       font-size: 20px;
@@ -39,6 +41,7 @@ export default {
   }
 
   &-main {
+    width: 100%;
     & p {
       margin-bottom: 10px;
       line-height: 160%;

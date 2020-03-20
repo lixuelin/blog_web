@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="home-article">
+    <div>
       <article-item :articles="artilce_list"></article-item>
     </div>
   </div>
