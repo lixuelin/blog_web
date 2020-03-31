@@ -6,6 +6,10 @@ function resolve(dir) {
 
 module.exports = {
   publicPath: "./",
+  pages: {
+    admin: "./src/pages/admin/main.js",
+    index: "./src/main.js"
+  },
   devServer: {
     port: 8088
   },
