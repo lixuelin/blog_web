@@ -11,8 +11,13 @@
     <van-popup
       v-model="show"
       position="left"
-      :style="{ width: '100px', height: '100%' }"
+      :style="{ width: '180px', height: '100%' }"
     >
+      <ul>
+        <li v-for="item in menu" :key="item.path">
+          {{ item.name }}
+        </li>
+      </ul>
     </van-popup>
   </div>
 </template>
@@ -21,7 +26,25 @@
 export default {
   data() {
     return {
-      show: false
+      show: false,
+      menu: [
+        {
+          name: "Home",
+          path: "/"
+        },
+        {
+          name: "Vue",
+          path: "/vue"
+        },
+        {
+          name: "Node",
+          path: "/node"
+        },
+        {
+          name: "About",
+          path: "/about"
+        }
+      ]
     };
   },
   methods: {
