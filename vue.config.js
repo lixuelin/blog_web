@@ -7,7 +7,11 @@ function resolve(dir) {
 module.exports = {
   publicPath: "./",
   pages: {
-    admin: "./src/pages/admin/main.js",
+    admin: {
+      entry: "./src/pages/admin/main.js",
+      template: "./public/admin.html",
+      filename: "admin.html"
+    },
     index: "./src/main.js"
   },
   devServer: {

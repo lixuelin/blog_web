@@ -54,6 +54,52 @@
   }
 }
 
+.admin-header {
+  display: flex;
+  padding: 0 15px;
+  &-logo {
+    flex-basis: 100px;
+    & img {
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &-nav {
+    flex: 1;
+  }
+
+  &-quit {
+    display: flex;
+    flex-basis: 60px;
+    align-items: center;
+    & button {
+      padding: 5px 15px;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.admin-nav {
+  padding-top: 90px;
+
+  &-title {
+    padding-left: 10px;
+    line-height: 40px;
+    transition: hover ease-in-out 1s;
+    cursor: pointer;
+    &:hover {
+      background: #f1f1f1;
+    }
+  }
+
+  &-child {
+    padding-left: 10px;
+  }
+}
+
 .nav {
   padding-top: 120px;
   & ul {
