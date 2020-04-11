@@ -2,23 +2,19 @@
   <div>
     <div class="form">
       <div class="form-group">
-        <label for="">文章标题：</label>
+        <label for>文章标题：</label>
         <div class="form-group-cont">
-          <input
-            type="text"
-            v-model="articleInfo.title"
-            placeholder="请输入标题"
-          />
+          <input type="text" v-model="articleInfo.name" placeholder="请输入标题" />
         </div>
       </div>
       <div class="form-group">
-        <label for="">文章内容：</label>
+        <label for>文章内容：</label>
         <div class="form-group-cont">
           <div id="edit"></div>
         </div>
       </div>
       <div class="form-group">
-        <label for="">是否推荐：</label>
+        <label for>是否推荐：</label>
         <div class="form-group-cont">
           <van-radio-group v-model="articleInfo.is_hot" direction="horizontal">
             <van-radio name="1">不推荐</van-radio>
@@ -39,9 +35,10 @@ export default {
   data() {
     return {
       articleInfo: {
-        title: "",
+        name: "",
         img: "",
-        cont: "",
+        content: "",
+        source: "原创",
         is_hot: "1"
       },
       edit: null
@@ -52,10 +49,13 @@ export default {
     this.edit = new Edit("#edit");
     this.edit.create();
     this.edit.txt.html("<p>用 JS 设置的内容</p>");
+    console.log(this.$http);
   },
   methods: {
-    save() {
-      console.log(this.edit.txt.html());
+    async save() {
+      this.articleInfo.content = this.edit.txt.html();
+      let res = await this.$Http.createArticle(this.articleInfo);
+      console.log(res);
     }
   }
 };
