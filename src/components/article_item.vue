@@ -13,14 +13,14 @@
             <time>{{ item.time }}</time>
           </div>
           <div>
-            <p>{{ item.content }}</p>
+            <p>{{ item.description }}</p>
           </div>
           <div>
             <span>{{ item.source }}</span>
           </div>
         </div>
         <div class="article-item-img">
-          <img src="./../assets/logo.png" alt="" />
+          <img src="./../assets/logo.png" alt />
         </div>
       </li>
     </ul>
@@ -40,8 +40,7 @@ export default {
   },
   methods: {
     go_to_detail(item) {
-      console.log(item);
-      this.$router.push({ name: "article_detail", query: { id: "ddd" } });
+      this.$router.push({ name: "article_detail", query: { id: item.id } });
     }
   }
 };

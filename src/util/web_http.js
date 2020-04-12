@@ -1,5 +1,5 @@
 const axios = require("axios");
-const serviceApi = require("./../api/index");
+const serviceApi = require("../api/web/index");
 const Http = {};
 
 let instance = axios.create({
@@ -12,8 +12,6 @@ let instance = axios.create({
 });
 
 for (let key in serviceApi) {
-  console.log(key);
-
   let api = serviceApi[key];
   Http[key] = async function(params, isFormData = false, config = {}) {
     let newParams = {};

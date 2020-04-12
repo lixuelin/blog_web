@@ -1,14 +1,10 @@
 <template>
   <div class="article">
     <header class="article-header">
-      <h1>{{ title }}</h1>
+      <h1>{{ article_info.name }}</h1>
     </header>
     <article class="article-main">
-      <div>
-        <template v-for="item in content">
-          <p :key="item">{{ item }}</p>
-        </template>
-      </div>
+      <div class="article-main-content" v-html="article_info.content" v-highlight></div>
     </article>
   </div>
 </template>
@@ -17,13 +13,24 @@
 export default {
   data() {
     return {
-      title: "做了这么久的程序员，你知道为什么会有Lambda表达式吗？",
-      content: [
-        "Java8有一些新的特性，今天老顾给大家分享一下关于Lambda表达式的由来，一开始感觉Lambda可读性蛮差的，不知道为什么Java8会出来这个表达式？既然大佬们推出来，肯定是有原因的，应该是为了解决一些问题，那我们就看看解决了什么问题？",
-        "上面的伪代码，是不是很简单，写一个方法，直接过滤出苏州地区的学生。",
-        "这样是不是就解决了，所有地区的查询问题，把地区作为一个参数。"
-      ]
+      article_info: {
+        name: "做了这么久的程序员，你知道为什么会有Lambda表达式吗？",
+        content:
+          "<pre><code>app.use(cors({<br>    origin: function (ctx) {<br>        if (ctx.url === '/test') {<br>            return '*'; // 允许来自所有域名请求<br>        }<br>        return 'http://localhost:8080'; / 这样就能只允许 http://localhost:8080 这个域名的请求了<br>    },<br>    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],<br>    maxAge: 5,<br>    credentials: true,<br>    allowMethods: ['GET', 'POST', 'DELETE'],<br>    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],<br>}))</code></pre>"
+      }
     };
+  },
+  mounted() {
+    this.get_article();
+  },
+  methods: {
+    async get_article() {
+      let data = this.$route.query;
+      try {
+        let res = await this.$http.queryArticleDetail(data);
+        this.article_info = res.data;
+      } catch (error) {}
+    }
   }
 };
 </script>
@@ -42,10 +49,17 @@ export default {
 
   &-main {
     width: 100%;
-    & p {
-      margin-bottom: 10px;
-      line-height: 160%;
-      text-indent: 24px;
+
+    &-content {
+      & h2,
+      & h3,
+      & h4 {
+        margin-bottom: 10px;
+      }
+      & pre {
+        display: block;
+        background: #000;
+      }
     }
   }
 }

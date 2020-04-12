@@ -39,7 +39,9 @@ export default {
         img: "",
         content: "",
         source: "原创",
-        is_hot: "1"
+        description: "adasda",
+        is_hot: "1",
+        author: "lxl"
       },
       edit: null
     };
@@ -49,12 +51,11 @@ export default {
     this.edit = new Edit("#edit");
     this.edit.create();
     this.edit.txt.html("<p>用 JS 设置的内容</p>");
-    console.log(this.$http);
   },
   methods: {
     async save() {
       this.articleInfo.content = this.edit.txt.html();
-      let res = await this.$Http.createArticle(this.articleInfo);
+      let res = await this.$http.createArticle(this.articleInfo);
       console.log(res);
     }
   }
