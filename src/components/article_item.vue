@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.articles, "dd");
+    console.log(this.articles);
   },
   methods: {
     go_to_detail(item) {

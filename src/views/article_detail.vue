@@ -46,21 +46,9 @@ export default {
       text-align: center;
     }
   }
-
   &-main {
+    padding-bottom: 50px;
     width: 100%;
-
-    &-content {
-      & h2,
-      & h3,
-      & h4 {
-        margin-bottom: 10px;
-      }
-      & pre {
-        display: block;
-        background: #000;
-      }
-    }
   }
 }
 </style>
