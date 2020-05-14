@@ -137,7 +137,6 @@
     display: flex;
   }
 
-
   &-default {
     flex-basis: 20px;
 
@@ -150,8 +149,6 @@
       border: 1px solid #ccc;
       border-radius: 16px;
     }
-
-
   }
 
   &-checked {
@@ -165,6 +162,46 @@
 
   &-value {
     flex-basis: 200px;
+  }
+}
+
+.btn {
+  margin-right: 5px;
+  padding: 3px 10px;
+  font-size: 12px;
+  border: 1px solid #f0f0f0;
+  outline: none;
+  cursor: pointer;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.btn-default {
+  background: rgba(246, 246, 246, 1);
+}
+
+.btn-success {
+  color: #fff;
+  background: #19be6b;
+}
+
+.btn-danger {
+  color: #fff;
+  background: rgb(255, 77, 73);
+}
+
+.table {
+  width: 100%;
+  & tr th,
+  & tr td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  & tr th {
+    background: #f1f1f1;
   }
 }
 
