@@ -6,11 +6,13 @@
         <btn danger @click.native="delArticle(row, index)">删除</btn>
       </template>
     </table-view>
+    <page-view></page-view>
   </div>
 </template>
 <script>
-import Btn from "./../../components/btn.vue";
+import Btn from "@/components/btn.vue";
 import TableView from "@/components/table/index.vue";
+import PageView from "@/components/page.vue";
 export default {
   data() {
     return {
@@ -50,6 +52,7 @@ export default {
   components: {
     TableView,
     Btn,
+    PageView,
   },
   mounted() {
     this.getArticles();

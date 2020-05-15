@@ -191,6 +191,37 @@
   background: rgb(255, 77, 73);
 }
 
+.page {
+  display: flex;
+  & li {
+    display: inline-flex;
+  }
+  &-prev {
+  }
+  &-next {
+  }
+
+  &-num {
+    position: relative;
+    display: inline-flex;
+    padding: 5px 10px;
+    width: 30px;
+    text-align: center;
+
+    &:before {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 2px;
+      content: "";
+      width: 80%;
+      height: 100%;
+      background: #ccc;
+      transform: rotate(30deg);
+    }
+  }
+}
+
 .table {
   width: 100%;
   & tr th,
