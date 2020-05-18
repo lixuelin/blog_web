@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <table-view :columns="columns" :data="list">
-      <template slot="action" slot-scope="{ row, index }">
-        <btn success @click.native="editArticle(row, index)">编辑</btn>
-        <btn danger @click.native="delArticle(row, index)">删除</btn>
-      </template>
-    </table-view>
-    <page-view></page-view>
+  <div class="article">
+    <div class="article-list">
+      <table-view :columns="columns" :data="list">
+        <template slot="action" slot-scope="{ row, index }">
+          <btn success @click.native="editArticle(row, index)">编辑</btn>
+          <btn danger @click.native="delArticle(row, index)">删除</btn>
+        </template>
+      </table-view>
+    </div>
+    <div class="article-page">
+      <page-view :pageInfo="pageInfo" @changePage="changePage"></page-view>
+    </div>
   </div>
 </template>
 <script>
@@ -47,6 +51,11 @@ export default {
           is_hot: 1,
         },
       ],
+      pageInfo: {
+        pageSize: 10,
+        total: 101,
+        currentPage: 3,
+      },
     };
   },
   components: {
@@ -74,7 +83,12 @@ export default {
       console.log("del");
       console.log(row, index);
     },
+    changePage(data) {
+      console.log(data, "page");
+    },
   },
 };
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+@import url("./../../assets/less/article.less");
+</style>
