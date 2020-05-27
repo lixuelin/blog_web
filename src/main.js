@@ -15,8 +15,7 @@ Vue.prototype.$http = Http;
 Vue.prototype.$toast = Toast;
 Vue.prototype.$notify = Notify;
 Vue.use(Vant);
-console.log(process.env.NODE_ENV, "node_env");
-console.log(process.env.BASE_URL, "node_env");
+
 Vue.directive("highlight", function(el) {
   let blocks = el.querySelectorAll("pre code");
   blocks.forEach((block) => {

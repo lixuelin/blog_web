@@ -1,5 +1,5 @@
 const Api = require("./api");
-console.log(Api[process.env.NODE_ENV]);
+console.log(process.env.VUE_APP_BASE_URL, "env");
 
 module.exports = {
   service: {

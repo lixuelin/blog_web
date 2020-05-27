@@ -4,7 +4,7 @@ const Http = {};
 const url = require("./../../config//service.config").api;
 
 let instance = axios.create({
-  baseURL: url,
+  baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000,
   headers: {
     authorization: "aa",
