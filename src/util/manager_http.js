@@ -1,7 +1,6 @@
 const axios = require("axios");
 const serviceApi = require("../api/manager/index");
 const Http = {};
-const url = require("./../../config//service.config").api;
 
 let instance = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
