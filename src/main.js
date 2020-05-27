@@ -15,10 +15,11 @@ Vue.prototype.$http = Http;
 Vue.prototype.$toast = Toast;
 Vue.prototype.$notify = Notify;
 Vue.use(Vant);
-
+console.log(process.env.NODE_ENV, "node_env");
+console.log(process.env.BASE_URL, "node_env");
 Vue.directive("highlight", function(el) {
   let blocks = el.querySelectorAll("pre code");
-  blocks.forEach(block => {
+  blocks.forEach((block) => {
     hljs.highlightBlock(block);
   });
 });
@@ -26,5 +27,5 @@ Vue.directive("highlight", function(el) {
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

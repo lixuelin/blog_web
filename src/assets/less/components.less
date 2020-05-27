@@ -73,6 +73,27 @@
 
     cursor: pointer;
   }
+
+  &-menu {
+    &-logo {
+      & img {
+        margin: 0 auto;
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    & li {
+      line-height: 40px;
+      border-bottom: 1px solid #f0f0f0;
+      text-align: center;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
 }
 
 .form {
@@ -172,6 +193,7 @@
   border: 1px solid #f0f0f0;
   outline: none;
   cursor: pointer;
+
   &:last-child {
     margin-right: 0;
   }
@@ -193,6 +215,7 @@
 
 .page {
   display: flex;
+
   & li {
     display: inline-flex;
     margin-right: 10px;
@@ -201,6 +224,7 @@
     border-radius: 3px;
     border: 1px solid #ccc;
     text-align: center;
+
     &:last-child {
       margin-right: 0;
     }
@@ -209,10 +233,12 @@
       border: 1px solid #19be6b;
     }
   }
+
   &-prev,
   &-next {
     cursor: pointer;
   }
+
   // &-next {
   // }
 
@@ -225,6 +251,7 @@
 
 .table {
   width: 100%;
+
   & tr th,
   & tr td {
     padding: 8px 10px;

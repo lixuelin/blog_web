@@ -1,14 +1,15 @@
 const axios = require("axios");
 const serviceApi = require("../api/web/index");
 const Http = {};
+import base_url from "./base_url";
 
 let instance = axios.create({
-  baseURL: "http://0.0.0.0:3000",
+  baseURL: base_url,
   timeout: 5000,
   headers: {
-    authorization: "aa"
+    authorization: "aa",
   },
-  withCredentials: true
+  withCredentials: true,
 });
 
 for (let key in serviceApi) {
@@ -46,25 +47,25 @@ for (let key in serviceApi) {
 }
 
 instance.interceptors.request.use(
-  config => {
+  (config) => {
     // config.headers.authorization = getCookie("ss");
     return config;
   },
-  error => {
+  (error) => {
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
-  res => {
+  (res) => {
     return res.data;
   },
-  error => {
+  (error) => {
     if (error.response) {
       let data = {
         status: error.response.status,
         msg: error.response.data.message || error.response.data.msg,
-        type: error.response.data.type
+        type: error.response.data.type,
       };
       return data;
     }
