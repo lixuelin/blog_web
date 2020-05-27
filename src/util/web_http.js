@@ -1,10 +1,10 @@
 const axios = require("axios");
 const serviceApi = require("../api/web/index");
 const Http = {};
-import base_url from "./base_url";
+const url = require("./../../config//service.config").api;
 
 let instance = axios.create({
-  baseURL: base_url,
+  baseURL: url,
   timeout: 5000,
   headers: {
     authorization: "aa",
