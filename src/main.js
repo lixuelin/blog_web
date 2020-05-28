@@ -5,7 +5,7 @@ import store from "./store";
 import Vant from "vant";
 import { Toast, Notify } from "vant";
 import "vant/lib/index.css";
-import "assets/less/reset.less";
+import "@less/reset.less";
 import Http from "./util/web_http";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";

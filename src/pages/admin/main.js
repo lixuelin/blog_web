@@ -4,7 +4,7 @@ import App from "./admin.vue";
 import router from "./router";
 import store from "./../../store";
 import "vant/lib/index.css";
-import "assets/less/reset.less";
+import "@less/reset.less";
 import Http from "./../../util/manager_http";
 
 Vue.prototype.$http = Http;
