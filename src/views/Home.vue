@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <div class="home-article">
-      <article-item :articles="artilce_list"></article-item>
+      <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+          <article-item :articles="list"></article-item>
+        </van-list>
+      </van-pull-refresh>
     </div>
-    <!-- <div class="home-recommend">
-      <p>这里是推荐</p>
-    </div>-->
   </div>
 </template>
 
@@ -16,49 +17,42 @@ export default {
   components: { ArticleItem },
   data() {
     return {
-      artilce_list: [
-        {
-          name: "我是来测试的",
-          time: "2019-11-16",
-          description:
-            "今年早些时候，奇舞团开源的 Node.js 框架 ── ThinkJS 迎来了她的 3.0 版本。尽管今年我很少更新博客，但「每次 ThinkJS 发布大版本，我都要更新博客程序」的老传统还是不能丢。所以，你现在看到的这个博客，已经是基于 ThinkJS 3 全面重构后的新版",
-          source: "www.baidu.com"
-        },
-        {
-          name: "我是来测试的",
-          time: "2019-11-16",
-          description:
-            "今年早些时候，奇舞团开源的 Node.js 框架 ── ThinkJS 迎来了她的 3.0 版本。尽管今年我很少更新博客，但「每次 ThinkJS 发布大版本，我都要更新博客程序」的老传统还是不能丢。所以，你现在看到的这个博客，已经是基于 ThinkJS 3 全面重构后的新版",
-          source: "www.baidu.com"
-        },
-        {
-          name: "我是来测试的",
-          time: "2019-11-16",
-          description:
-            "今年早些时候，奇舞团开源的 Node.js 框架 ── ThinkJS 迎来了她的 3.0 版本。尽管今年我很少更新博客，但「每次 ThinkJS 发布大版本，我都要更新博客程序」的老传统还是不能丢。所以，你现在看到的这个博客，已经是基于 ThinkJS 3 全面重构后的新版",
-          source: "www.baidu.com"
-        },
-        {
-          name: "我是来测试的",
-          time: "2019-11-16",
-          description:
-            "今年早些时候，奇舞团开源的 Node.js 框架 ── ThinkJS 迎来了她的 3.0 版本。尽管今年我很少更新博客，但「每次 ThinkJS 发布大版本，我都要更新博客程序」的老传统还是不能丢。所以，你现在看到的这个博客，已经是基于 ThinkJS 3 全面重构后的新版",
-          source: "www.baidu.com"
-        }
-      ]
+      loading: false,
+      finished: false,
+      refreshing: false,
+      page_size: 5,
+      page: 0,
+      list: []
     };
   },
-  mounted() {
-    this.queryArticles();
-  },
+  mounted() {},
   methods: {
+    onLoad() {
+      setTimeout(async () => {
+        if (this.refreshing) {
+          this.list = [];
+          this.refreshing = false;
+        }
+        this.queryArticles();
+      }, 1000);
+    },
+    onRefresh() {
+      this.finished = false;
+      // 将 loading 设置为 true，表示处于加载状态
+      this.loading = true;
+      this.onLoad();
+    },
     async queryArticles() {
-      try {
-        let res = await this.$http.queryArticles();
-        this.artilce_list = res.data.rows;
-      } catch (error) {
-        this.$notify({ type: "danger", message: "请求失败" });
+      let data = {
+        page: this.page
+      };
+      let res = await this.$http.queryArticles(data);
+      this.list = this.list.concat(res.data.rows);
+      if (res.data.rows.length < this.page_size || res.data.rows.length === 0) {
+        this.finished = true;
       }
+      this.loading = false;
+      this.page = this.page + 1;
     }
   }
 };

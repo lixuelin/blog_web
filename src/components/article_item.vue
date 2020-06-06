@@ -32,17 +32,15 @@ export default {
   name: "article-item",
   props: {
     articles: {
-      type: Array,
-    },
+      type: Array
+    }
   },
-  mounted() {
-    console.log(this.articles);
-  },
+  mounted() {},
   methods: {
     go_to_detail(item) {
       this.$router.push({ name: "article_detail", query: { id: item.id } });
-    },
-  },
+    }
+  }
 };
 </script>
 
