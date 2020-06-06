@@ -20,7 +20,7 @@ export default {
       loading: false,
       finished: false,
       refreshing: false,
-      page_size: 5,
+      page_size: 10,
       page: 0,
       list: []
     };
