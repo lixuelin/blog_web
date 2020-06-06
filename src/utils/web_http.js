@@ -1,5 +1,5 @@
-const axios = require("axios");
-const serviceApi = require("../api/manager/index");
+// const axios = require("axios");
+const serviceApi = require("../api/index");
 const Http = {};
 
 let instance = axios.create({
