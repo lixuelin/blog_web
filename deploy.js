@@ -1,5 +1,5 @@
 const scpClient = require("scp2");
-const config = require("../config/service.config").service;
+const config = require("./config/service.config").service;
 // const chalk = require("chalk");
 scpClient.scp("dist/", config, function(err) {
   if (err) {
