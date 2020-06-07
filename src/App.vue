@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="mobile-header">
-      <mobile-header-view></mobile-header-view>
+      <mobile-header-view @updateArticle="updateArticle"></mobile-header-view>
     </div>
     <div class="layout">
       <div id="header" class="layout-head">
@@ -35,6 +35,9 @@ export default {
   methods: {
     showPopup() {
       this.show = !this.show;
+    },
+    updateArticle(data) {
+      console.log(data, "update data");
     }
   }
 };
