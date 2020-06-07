@@ -30,15 +30,32 @@ export default {
     onLoad() {
       setTimeout(async () => {
         if (this.refreshing) {
-          this.list = [];
+          // this.list = [];
           this.refreshing = false;
+        }
+        // let data = {
+        //   page: this.page
+        // };
+        // let res = await this.$http.queryArticles(data);
+        // this.list = this.list.concat(res.data.rows);
+        // if (
+        //   res.data.rows.length < this.page_size ||
+        //   res.data.rows.length === 0
+        // ) {
+        //   this.finished = true;
+        // }
+        // this.loading = false;
+        // this.page = this.page + 1;
+        if (this.total === this.list.length) {
+          this.finished = true;
+          this.loading = false;
+          return;
         }
         this.queryArticles();
       }, 1000);
     },
     onRefresh() {
       this.finished = false;
-      // 将 loading 设置为 true，表示处于加载状态
       this.loading = true;
       this.onLoad();
     },
@@ -47,6 +64,7 @@ export default {
         page: this.page
       };
       let res = await this.$http.queryArticles(data);
+      this.total = res.data.count;
       this.list = this.list.concat(res.data.rows);
       if (res.data.rows.length < this.page_size || res.data.rows.length === 0) {
         this.finished = true;
