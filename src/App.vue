@@ -13,7 +13,7 @@
       <div id="container" class="layout-container">
         <router-view />
         <p>
-          <a href="http://www.beian.miit.gov.cn/">京ICP备999999号</a>
+          <a href="http://www.beian.miit.gov.cn/">京ICP备20022813号</a>
         </p>
       </div>
     </div>
