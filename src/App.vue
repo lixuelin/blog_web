@@ -12,6 +12,9 @@
       </div>
       <div id="container" class="layout-container">
         <router-view />
+        <p>
+          <a href="http://www.beian.miit.gov.cn/">京ICP备999999号</a>
+        </p>
       </div>
     </div>
   </div>
