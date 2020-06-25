@@ -42,4 +42,15 @@ module.exports = {
     sourceMap: false,
     requireModuleExtension: true,
   },
+  devServer: {
+    proxy: {
+      "/": {
+        target: "http://0.0.0.0:8088/api",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "/",
+        },
+      },
+    },
+  },
 };
